@@ -7,14 +7,13 @@ const GithubButton = (props) => {
   if (large) src += '&size=large';
 
   return (
-    <iframe
-      src={src}
-      frameBorder="0"
-      allowTransparency="true"
-      scrolling="0"
-      width={width}
-      height={height}
-      style={{border: 'none', width: width, height: height}}></iframe>
+    <iframe src={src}
+            frameBorder="0"
+            allowTransparency="true"
+            scrolling="0"
+            width={width}
+            height={height}
+            style={{border: 'none', width: width, height: height}}/>
   );
 };
 

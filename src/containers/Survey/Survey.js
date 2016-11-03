@@ -1,21 +1,22 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import {initialize} from 'redux-form';
-import {SurveyForm} from 'components';
+import { initialize } from 'redux-form';
+import { SurveyForm } from 'components';
 
 @connect(
   () => ({}),
   {initialize})
 export default class Survey extends Component {
+
   static propTypes = {
     initialize: PropTypes.func.isRequired
-  }
+  };
 
   handleSubmit = (data) => {
     window.alert('Data submitted! ' + JSON.stringify(data));
     this.props.initialize('survey', {});
-  }
+  };
 
   handleInitialize = () => {
     this.props.initialize('survey', {
@@ -25,7 +26,7 @@ export default class Survey extends Component {
       currentlyEmployed: true,
       sex: 'male'
     });
-  }
+  };
 
   render() {
     return (

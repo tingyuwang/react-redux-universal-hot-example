@@ -3,14 +3,14 @@ import load from '../widget/load';
 import sinon from 'sinon';
 
 describe('widget load', () => {
-  afterEach(()=> {
+  afterEach(() => {
     if ('restore' in Math.random) {
       Math.random.restore(); // reset the Math.random fixture
     }
   });
 
   describe('successful', () => {
-    beforeEach(()=> {
+    beforeEach(() => {
       sinon.stub(Math, 'random').returns(0.4);
     });
 
@@ -29,16 +29,15 @@ describe('widget load', () => {
   });
 
   describe('unsuccessful', () => {
-    beforeEach(()=> {
+    beforeEach(() => {
       sinon.stub(Math, 'random').returns(0.2);
     });
 
     it('rejects the call', () => {
-      return load({session: {}}).
-      then(
-        ()=> {
+      return load({session: {}}).then(
+        () => {
         },
-        (err)=> {
+        (err) => {
           expect(err).to.equal('Widget load fails 33% of the time. You were unlucky.');
         });
     });

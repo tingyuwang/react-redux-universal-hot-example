@@ -24,7 +24,6 @@ app.use(session({
 }));
 app.use(bodyParser.json());
 
-
 app.use((req, res) => {
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
 
@@ -50,7 +49,6 @@ app.use((req, res) => {
     res.status(404).end('NOT FOUND');
   }
 });
-
 
 const bufferSize = 100;
 const messageBuffer = new Array(bufferSize);

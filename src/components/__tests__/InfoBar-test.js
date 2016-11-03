@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {renderIntoDocument} from 'react-addons-test-utils';
-import { expect} from 'chai';
+import { renderIntoDocument } from 'react-addons-test-utils';
+import { expect } from 'chai';
 import { InfoBar } from 'components';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -12,7 +12,8 @@ const client = new ApiClient();
 describe('InfoBar', () => {
   const mockStore = {
     info: {
-      load: () => {},
+      load: () => {
+      },
       loaded: true,
       loading: false,
       data: {

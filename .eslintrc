@@ -1,11 +1,20 @@
-{ "extends": "eslint-config-airbnb",
+{
+  "extends" : [
+    "standard",
+    "standard-react"
+  ],
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "node": true,
     "mocha": true
   },
   "rules": {
+    "strict": 0,
     "react/no-multi-comp": 0,
+    "react/jsx-space-before-closing": 0,
+    "react/jsx-no-bind": 0,
+    "react/jsx-indent-props": 0,
     "import/default": 0,
     "import/no-duplicates": 0,
     "import/named": 0,
@@ -15,10 +24,19 @@
     "comma-dangle": 0,  // not sure why airbnb turned this on. gross!
     "indent": [2, 2, {"SwitchCase": 1}],
     "no-console": 0,
-    "no-alert": 0
+    "no-alert": 0,
+    "no-return-assign": 0,
+    "no-duplicate-imports" : 0,
+    "semi" : [2, "always"],
+    "max-len": [2, 200, 2],
+    "generator-star-spacing": 0,
+    "babel/generator-star-spacing": 1,
+    "jsx-quotes": [2, "prefer-double"],
+    "space-before-function-paren": [0, "never"],
+    "standard/computed-property-even-spacing": 0
   },
   "plugins": [
-    "react", "import"
+    "react", "import", "babel", "promise"
   ],
   "settings": {
     "import/parser": "babel-eslint",

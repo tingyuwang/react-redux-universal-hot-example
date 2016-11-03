@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component, PropTypes } from 'react';
+import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import surveyValidation from './surveyValidation';
 import * as surveyActions from 'redux/modules/survey';
 
@@ -11,9 +11,8 @@ function asyncValidate(data, dispatch, {isValidEmail}) {
   }
   return isValidEmail(data);
 }
-@connect(() => ({}),
-  dispatch => bindActionCreators(surveyActions, dispatch)
-)
+
+@connect(() => ({}), dispatch => bindActionCreators(surveyActions, dispatch))
 @reduxForm({
   form: 'survey',
   fields: ['name', 'email', 'occupation', 'currentlyEmployed', 'sex'],
@@ -21,32 +20,32 @@ function asyncValidate(data, dispatch, {isValidEmail}) {
   asyncValidate,
   asyncBlurFields: ['email']
 })
-export default
-class SurveyForm extends Component {
+export default class SurveyForm extends Component {
+
   static propTypes = {
     active: PropTypes.string,
     asyncValidating: PropTypes.bool.isRequired,
-    fields: PropTypes.object.isRequired,
+    fields: PropTypes.array.isRequired,
     dirty: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     pristine: PropTypes.bool.isRequired,
     valid: PropTypes.bool.isRequired
-  }
+  };
 
   render() {
     const {
       asyncValidating,
       dirty,
-      fields: {name, email, occupation, currentlyEmployed, sex},
+      fields: [name, email, occupation, currentlyEmployed, sex],
       active,
       handleSubmit,
       invalid,
       resetForm,
       pristine,
       valid
-      } = this.props;
+    } = this.props;
     const styles = require('./SurveyForm.scss');
     const renderInput = (field, label, showAsyncValidating) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
@@ -101,26 +100,26 @@ class SurveyForm extends Component {
 
         <table className="table table-striped">
           <tbody>
-          <tr>
-            <th>Active Field</th>
-            <td>{active}</td>
-          </tr>
-          <tr>
-            <th>Dirty</th>
-            <td className={dirty ? 'success' : 'danger'}>{dirty ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Pristine</th>
-            <td className={pristine ? 'success' : 'danger'}>{pristine ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Valid</th>
-            <td className={valid ? 'success' : 'danger'}>{valid ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Invalid</th>
-            <td className={invalid ? 'success' : 'danger'}>{invalid ? 'true' : 'false'}</td>
-          </tr>
+            <tr>
+              <th>Active Field</th>
+              <td>{active}</td>
+            </tr>
+            <tr>
+              <th>Dirty</th>
+              <td className={dirty ? 'success' : 'danger'}>{dirty ? 'true' : 'false'}</td>
+            </tr>
+            <tr>
+              <th>Pristine</th>
+              <td className={pristine ? 'success' : 'danger'}>{pristine ? 'true' : 'false'}</td>
+            </tr>
+            <tr>
+              <th>Valid</th>
+              <td className={valid ? 'success' : 'danger'}>{valid ? 'true' : 'false'}</td>
+            </tr>
+            <tr>
+              <th>Invalid</th>
+              <td className={invalid ? 'success' : 'danger'}>{invalid ? 'true' : 'false'}</td>
+            </tr>
           </tbody>
         </table>
       </div>
